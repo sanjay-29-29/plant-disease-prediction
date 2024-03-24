@@ -1,9 +1,13 @@
-Green AI - Plant Disease Prediction Web App
+<b>Green AI - Plant Disease Prediction Web App</b> <br>
+Green AI helps farmers and gardeners accurately identify plant diseases for timely intervention. <br>
 
-GreenAI is a full-stack application designed to help farmers and gardeners accurately diagnose plant diseases. Our solution leverages the following:
+<b>Features</b> <br>
+-> Custom Machine Learning: Combines a Qwen model (trained on agricultural data) and AlexNet architecture for robust image classification. <br>
+-> User-Friendly Frontend: React and Vite offer a seamless image upload and diagnosis experience. <br>
 
-Custom Machine Learning: A meticulously trained Qwen model on agricultural data combined with AlexNet ensures robust image classification for plant disease identification.
-Modern Frontend: Built with React and Vite, Green AI delivers a seamless and responsive user experience for effortless image uploads and clear diagnosis results.
+![alt text](https://github.com/sanjay-29-29/plant-disease-prediction/blob/master/assets/image.png?raw=true) <br>
 
-![alt text](https://github.com/sanjay-29-29/plant-disease-prediction/blob/master/assets/image.jpg?raw=true)
-
+<b>Tech Stack:</b><br>
+-> Frontend: React, Vite, Tailwind CSS <br>
+-> Backend: FastAPI, ngrok <br>
+-> Machine Learning: Custom Qwen LLM Model, AlexNet <br>
