@@ -2,9 +2,9 @@ import axios from 'axios';
 import { useState, useEffect, useRef } from 'react'
 import { faUpload, faPaperPlane } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser, faVolumeUp } from '@fortawesome/free-solid-svg-icons'
+import { faVolumeUp } from '@fortawesome/free-solid-svg-icons'
 
-const englishTextBox = ({ lang, setLang }) => {
+const englishTextBox = () => {
   const [text, setText] = useState('')
   const [messages, setMessages] = useState([])
   const [imageFile, setImageFile] = useState(null);
@@ -94,7 +94,7 @@ const englishTextBox = ({ lang, setLang }) => {
   
     const utterance_english = new SpeechSynthesisUtterance(word);
     const voices_english = speechSynthesis.getVoices();
-    console.log(voices_english); // Log the available voices
+    console.log(voices_english); 
   
     const englishVoice = voices_english.find(voice => voice.lang === 'en-US'); 
   
@@ -121,22 +121,23 @@ const englishTextBox = ({ lang, setLang }) => {
       >     {messages.map((message, index) => {
         return (
           <pre key={index}>
-            <div className={`mt-4 mx-2 text-left overflow-y-auto text-wrap ${message.user === 'User' ? 'flex flex-col' : ''}`} style={{ wordWrap: 'break-word' }}>
-              <div className="flex items-center">
-                <p className={`text-${message.user === 'User' ? 'white' : 'green-500'} font-mono font-bold text-wrap`}>{message.user}</p>
+              <div className={`mt-4 mx-2 text-left overflow-y-auto text-wrap ${message.user === 'User' ? 'flex flex-col' : ''}`} style={{ wordWrap: 'break-word' }}>
+                  <div className="flex items-center">
+                      <p className={`text-${message.user === 'User' ? 'white' : 'green-500'} font-mono font-bold text-wrap`}>{message.user}</p>
+                  </div>
+                  <div className='flex flex-col items-start text-wrap'>
+                      {message.image && <img className='object-cover rounded-md w-24 h-24 mb-2' src={message.image} alt='Preview' />}
+                      {message.user === 'GreenAI' && (
+                          <button className='mr-2 hover:bg-green-700 text-white font-bold rounded' onClick={_ => speak_english(message.text)}>
+                              <FontAwesomeIcon icon={faVolumeUp} />
+                          </button>
+                      )}
+                      <p className='text-white font-mono font-bold'>{message.text}</p>
+                  </div>
               </div>
-              <div className='flex items-center text-wrap'>
-                {message.image && <img className='object-cover rounded-md w-24 h-24 mb-2' src={message.image} alt='Preview' />}
-                {message.user === 'GreenAI' && (
-                  <button className='mr-2 hover:bg-green-700 text-white font-bold rounded' onClick={_ => speak_english(message.text)}>
-                    <FontAwesomeIcon icon={faVolumeUp} />
-                  </button>
-                )}
-                <p className='text-white font-mono font-bold'>{message.text}</p>
-              </div>
-            </div>
           </pre>
-        );
+      );
+      
       })}
 
         <div ref={messagesEndRef} />

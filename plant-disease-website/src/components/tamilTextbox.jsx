@@ -69,7 +69,7 @@ const tamilTextBox = () => {
 
     catch (error) {
       console.error('Error:', error);
-      setMessages(prevMessages => [...prevMessages, { text: 'An error occurred while processing your request.', user: 'GreenAI' }]);
+      setMessages(prevMessages => [...prevMessages, { text: 'பிழை ஏற்பட்டுள்ளது.', user: 'GreenAI' }]);
     };
 
     setText('');
@@ -113,10 +113,10 @@ const tamilTextBox = () => {
               <div className="flex items-center">
                 <p className={`text-${message.user === 'User' ? 'white' : 'green-500'} font-mono font-bold text-wrap`}>{message.user}</p>
               </div>
-              <div className='flex items-center text-wrap'>
+              <div className='flex flex-col items-start text-wrap'>
                 {message.image && <img className='object-cover rounded-md w-24 h-24 mb-2' src={message.image} alt='Preview' />}
                 {message.user === 'GreenAI' && (
-                  <button className='mr-2 hover:bg-green-700 text-white font-bold rounded' onClick={_ => speak_english(message.text)}>
+                  <button className='mr-2 hover:bg-green-700 text-white font-bold rounded' onClick={_ => speak_tamil(message.text)}>
                     <FontAwesomeIcon icon={faVolumeUp} />
                   </button>
                 )}
@@ -153,10 +153,10 @@ const tamilTextBox = () => {
               onChange={(e) => setText(e.target.value)}
               onKeyDown={(e) => {
                 if (e.key === 'Enter') {
-                  e.preventDefault(); // prevent the default action of the Enter key
-                  const currentText = text; // store the current text
-                  setText(''); // clear the input box
-                  handleClick(currentText); // call handleClick with the current text
+                  e.preventDefault(); 
+                  const currentText = text; 
+                  setText('');
+                  handleClick(currentText); 
                 }
               }}
             />
@@ -176,9 +176,9 @@ const tamilTextBox = () => {
               <button
                 className='mr-2 py-2 px-4 bg-green-500 text-white rounded cursor-pointer'
                 onClick={() => {
-                  const currentText = text; // store the current text
-                  setText(''); // clear the input box
-                  handleClick(currentText); // call handleClick with the current text
+                  const currentText = text; 
+                  setText('');
+                  handleClick(currentText);
                 }}
               >
                 <FontAwesomeIcon icon={faPaperPlane} size='lg' color='white' />
